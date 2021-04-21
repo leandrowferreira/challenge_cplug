@@ -16,20 +16,25 @@ O projeto esta foi feito em Laravel e banco de dados MySql.
  - Refatorar o método *CustomerController@store* 
  - Implementar o método *CustomerController@update*
 
-Fique livre para fazer qualquer alteração no CustomerController desde que o teste automatizado execute com sucesso:
+Fique livre para fazer qualquer **alteração** no CustomerController porém o teste abaixo deve executar com sucesso:
 
     php artisan test --filter=CustomerTest
 
 ## 02 - Cálculo de parcelas
+
+Corrigir o bug no cálculo do valor das parcelas da rota /api/payment/calculate descrito no teste:
+
+    php artisan test --filter=PaymentTest
+
 ## 03 - Consumo de API
 ## 04 - Filtro por hora
 ## 05 - Modelagem de Produtos com Atributos
 
 Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
-- Camiseta da seleção brasileira
-    - Tamanho: P, M, G e GG
-- Chuteira da Nike
-    - Tamanho: 36, 38, 40, 42
-    - Cores: Azul, Vermelho, Verde, Rosa
+    - Camiseta da seleção brasileira
+        - Tamanho: P, M, G e GG
+    - Chuteira da Nike
+        - Tamanho: 36, 38, 40, 42
+        - Cores: Azul, Vermelho, Verde, Rosa
 
 Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de cada item.
