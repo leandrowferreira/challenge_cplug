@@ -59,6 +59,7 @@ Teste que deve executar:
 
 Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o que já está ocupado. Ex:
 
+```php
     //escolhido das 07h as 08h
     $selected = ['start' => '07:00', 'end' => '08:00'];
 
@@ -66,6 +67,7 @@ Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o 
     $blocked = ['start' => '09:00', 'end' => '10:00'];
 
     //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
+```
 
 Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
 
@@ -75,10 +77,10 @@ Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest s
 
 Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
 
- - Camiseta da seleção brasileira
-  - Tamanho: P, M, G e GG
- - Chuteira da Nike
-  - Tamanho: 36, 38, 40, 42
-  - Cores: Azul, Vermelho, Verde, Rosa
+* Camiseta da seleção brasileira
+   * Tamanho: P, M, G e GG
+* Chuteira da Nike
+   * Tamanho: 36, 38, 40, 42
+   * Cores: Azul, Vermelho, Verde, Rosa
 
 Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de cada item.
