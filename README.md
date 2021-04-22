@@ -16,6 +16,8 @@ O projeto esta foi feito em Laravel e banco de dados MySql.
 
     php artisan migrate
 
+Podem ser adicionados outros métodos nos arquivos de teste porém os que existem não podem ser modificados. E o objetivo final é executar todos os testes existentes com sucesso.
+
 # Exercícios
 
 ## 01 - Clientes
@@ -49,6 +51,8 @@ Exemplo de saída:
     "intervalo_em_dias": 76
     }
 
+Teste que deve executar:
+
     php artisan test --filter=ApiTest
 
 ## 04 - Filtro por hora
@@ -58,7 +62,7 @@ Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o 
     //escolhido das 07h as 08h
     $selected = ['start' => '07:00', 'end' => '08:00'];
 
-    //já está reservado das 09h as 10h
+    //ja esta reservado das 09h as 10h
     $blocked = ['start' => '09:00', 'end' => '10:00'];
 
     //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
