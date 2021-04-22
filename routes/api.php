@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendamentoController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;

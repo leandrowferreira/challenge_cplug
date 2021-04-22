@@ -41,6 +41,19 @@ Para o valor utilizar o preço médio do dia segundo a API Pública [https://www
     php artisan test --filter=ApiTest
 
 ## 04 - Filtro por hora
+
+Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o que já está ocupado. Ex:
+
+    //escolhido das 07h as 08h
+    $selected = ['start' => '07:00', 'end' => '08:00'];
+    //já está reservado das 09h as 10h
+    $blocked = ['start' => '09:00', 'end' => '10:00'];
+    //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
+
+Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
+
+    php artisan test --filter=SchedulerTest
+
 ## 05 - Modelagem de Produtos com Atributos
 
 Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
