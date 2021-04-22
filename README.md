@@ -101,3 +101,5 @@ Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de ca
 ## 06 - Front-end
 
 Crie um formulário que receba duas datas (data de compra e de venda), quantidade e uma das moeda (BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP) e consultando a API criado no Exercício 03 exiba o valor de compra, venda e lucro.
+
+Adicione validação dos campos de entrada (data de entrada, saida, tipo de moeda) em um arquivo de Request.
