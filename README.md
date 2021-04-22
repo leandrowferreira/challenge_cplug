@@ -1,6 +1,6 @@
 # Teste de seleção para desenvolvedor PHP
 
-Esse teste é dividido em 5 exercícios.
+Esse teste é dividido em 6 exercícios.
 
 Serão analisados:
 
@@ -50,19 +50,19 @@ Para o valor utilizar o preço médio do dia segundo a API Pública [https://www
 Exemplo de saída:
 
 ```json
-    {
+{
     "valor_da_compra": 10513.88,
     "valor_da_venda": 46656.85,
     "lucro": 36144.97,
     "lucro_percentual": 343.78,
     "intervalo_em_dias": 76
-    }
+}
 ```
 
 Teste que deve executar:
 
 ```php
-    php artisan test --filter=ApiTest
+php artisan test --filter=ApiTest
 ```
 
 ## 04 - Filtro por hora
@@ -70,13 +70,13 @@ Teste que deve executar:
 Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o que já está ocupado. Ex:
 
 ```php
-    //escolhido das 07h as 08h
-    $selected = ['start' => '07:00', 'end' => '08:00'];
+//escolhido das 07h as 08h
+$selected = ['start' => '07:00', 'end' => '08:00'];
 
-    //ja esta reservado das 09h as 10h
-    $blocked = ['start' => '09:00', 'end' => '10:00'];
+//ja esta reservado das 09h as 10h
+$blocked = ['start' => '09:00', 'end' => '10:00'];
 
-    //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
+//nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
 ```
 
 Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
@@ -97,3 +97,7 @@ Criar os migrates com as tabelas necessárias para armazenar produtos que possue
     * Cores: Azul, Vermelho, Verde, Rosa
 
 Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de cada item.
+
+## 06 - Front-end
+
+Crie um formulário que receba duas datas (data de compra e de venda), quantidade e uma das moeda (BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP) e consultando a API criado no Exercício 03 exiba o valor de compra, venda e lucro.
