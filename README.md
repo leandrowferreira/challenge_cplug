@@ -1,12 +1,18 @@
 # Teste de seleção para desenvolvedor PHP
 
-Esse teste é dividido em X questões.
+Esse teste é dividido em 5 exercícios.
+
+Serão analisados:
+ - Estrutura, código organizado e limpo
+ - Conceitos SOLID
+ - Uso dos recursos do Laravel
 
 # Instruções
 
 O projeto esta foi feito em Laravel e banco de dados MySql.
 
     composer install
+
     php artisan migrate
 
 # Exercícios
@@ -16,7 +22,7 @@ O projeto esta foi feito em Laravel e banco de dados MySql.
  - Refatorar o método *CustomerController@store* 
  - Implementar o método *CustomerController@update*
 
-Fique livre para fazer qualquer **alteração** no CustomerController porém o teste abaixo deve executar com sucesso:
+Fique livre para fazer **qualquer alteração** no projeto (exceto nos testes unitários que devem executar com sucesso):
 
     php artisan test --filter=CustomerTest
 
@@ -27,6 +33,13 @@ Corrigir o bug no cálculo do valor das parcelas da rota /api/payment/calculate 
     php artisan test --filter=PaymentTest
 
 ## 03 - Consumo de API
+
+Implementar uma API (adicionar rota, criar o controller, etc) que receba um tipo de cryptmoeda, a data de compra e a data de venda. E que retorne o valor pago, vendido e o lucro. Conforme descrito no tests/Feature/ApiTest.php
+
+Para o valor utilizar o preço médio do dia segundo a API Pública [https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary](https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary)
+
+    php artisan test --filter=ApiTest
+
 ## 04 - Filtro por hora
 ## 05 - Modelagem de Produtos com Atributos
 
