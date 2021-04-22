@@ -3,6 +3,7 @@
 Esse teste é dividido em 5 exercícios.
 
 Serão analisados:
+
  - Estrutura, código organizado e limpo
  - Conceitos SOLID
  - Uso dos recursos do Laravel
@@ -34,9 +35,19 @@ Corrigir o bug no cálculo do valor das parcelas da rota /api/payment/calculate 
 
 ## 03 - Consumo de API
 
-Implementar uma API (adicionar rota, criar o controller, etc) que receba um tipo de cryptmoeda, a data de compra e a data de venda. E que retorne o valor pago, vendido e o lucro. Conforme descrito no tests/Feature/ApiTest.php
+Implementar uma API (adicionar rota, criar o controller, etc) que receba um tipo de cryptmoeda, a data de compra e a data de venda. E que retorne o valor pago, vendido e o lucro. Conforme descrito no [tests/Feature/ApiTest.php]
 
 Para o valor utilizar o preço médio do dia segundo a API Pública [https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary](https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary)
+
+Exemplo de saída:
+
+    {
+    "valor_da_compra": 10513.88,
+    "valor_da_venda": 46656.85,
+    "lucro": 36144.97,
+    "lucro_percentual": 343.78,
+    "intervalo_em_dias": 76
+    }
 
     php artisan test --filter=ApiTest
 
@@ -46,8 +57,10 @@ Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o 
 
     //escolhido das 07h as 08h
     $selected = ['start' => '07:00', 'end' => '08:00'];
+
     //já está reservado das 09h as 10h
     $blocked = ['start' => '09:00', 'end' => '10:00'];
+
     //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
 
 Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
@@ -57,10 +70,11 @@ Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest s
 ## 05 - Modelagem de Produtos com Atributos
 
 Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
-    - Camiseta da seleção brasileira
-        - Tamanho: P, M, G e GG
-    - Chuteira da Nike
-        - Tamanho: 36, 38, 40, 42
-        - Cores: Azul, Vermelho, Verde, Rosa
+
+ - Camiseta da seleção brasileira
+  - Tamanho: P, M, G e GG
+ - Chuteira da Nike
+  - Tamanho: 36, 38, 40, 42
+  - Cores: Azul, Vermelho, Verde, Rosa
 
 Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de cada item.
