@@ -12,9 +12,11 @@ Serão analisados:
 
 O projeto esta foi feito em Laravel e banco de dados MySql.
 
-    composer install
+```php
+composer install
 
-    php artisan migrate
+php artisan migrate
+```
 
 Podem ser adicionados outros métodos nos arquivos de teste porém os que existem não podem ser modificados. E o objetivo final é executar todos os testes existentes com sucesso.
 
@@ -27,13 +29,17 @@ Podem ser adicionados outros métodos nos arquivos de teste porém os que existe
 
 Fique livre para fazer **qualquer alteração** no projeto (exceto nos testes unitários que devem executar com sucesso):
 
-    php artisan test --filter=CustomerTest
+```php
+php artisan test --filter=CustomerTest
+```
 
 ## 02 - Cálculo de parcelas
 
 Corrigir o bug no cálculo do valor das parcelas da rota /api/payment/calculate descrito no teste:
 
-    php artisan test --filter=PaymentTest
+```php
+php artisan test --filter=PaymentTest
+```
 
 ## 03 - Consumo de API
 
@@ -43,6 +49,7 @@ Para o valor utilizar o preço médio do dia segundo a API Pública [https://www
 
 Exemplo de saída:
 
+```json
     {
     "valor_da_compra": 10513.88,
     "valor_da_venda": 46656.85,
@@ -50,10 +57,13 @@ Exemplo de saída:
     "lucro_percentual": 343.78,
     "intervalo_em_dias": 76
     }
+```
 
 Teste que deve executar:
 
+```php
     php artisan test --filter=ApiTest
+```
 
 ## 04 - Filtro por hora
 
@@ -71,16 +81,19 @@ Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o 
 
 Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
 
-    php artisan test --filter=SchedulerTest
+```php
+php artisan test --filter=SchedulerTest
+```
 
 ## 05 - Modelagem de Produtos com Atributos
 
 Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
 
 * Camiseta da seleção brasileira
-   * Tamanho: P, M, G e GG
+    * Tamanho: P, M, G e GG
+
 * Chuteira da Nike
-   * Tamanho: 36, 38, 40, 42
-   * Cores: Azul, Vermelho, Verde, Rosa
+    * Tamanho: 36, 38, 40, 42
+    * Cores: Azul, Vermelho, Verde, Rosa
 
 Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de cada item.
