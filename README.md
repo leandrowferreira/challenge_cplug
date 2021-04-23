@@ -18,16 +18,20 @@ composer install
 php artisan migrate
 ```
 
-Podem ser adicionados outros métodos nos arquivos de teste porém os que existem não podem ser modificados. E o objetivo final é executar todos os testes existentes com sucesso.
+Podem ser adicionados outros métodos nos arquivos de teste porém os que existem **não devem** ser modificados. E o objetivo final é executar todos os testes existentes com sucesso.
 
 # Exercícios
 
 ## 01 - Clientes
 
+Para esse exercicío será utilizado o arquivo [CustomerController](https://bitbucket.org/cplug/provaphp/src/master/app/Http/Controllers/CustomerController.php)
+
  - Refatorar o método *CustomerController@store* 
  - Implementar o método *CustomerController@update*
 
-Fique livre para fazer **qualquer alteração** no projeto (exceto nos testes unitários que devem executar com sucesso):
+Fique livre para fazer **qualquer alteração** no projeto (exceto nos testes unitários):
+
+Ao final do exercicio o teste abaixo deve executar com sucesso:
 
 ```php
 php artisan test --filter=CustomerTest
@@ -35,7 +39,11 @@ php artisan test --filter=CustomerTest
 
 ## 02 - Cálculo de parcelas
 
-Corrigir o bug no cálculo do valor das parcelas da rota /api/payment/calculate descrito no teste:
+A rota /api/payment/calculate/<valor>/<parcelas> recebe um valor e a quantidade de parcelas de um pagamento. E retorna as parcelas com seus respectivos valores. Porém quando tentamos parcelar 100 reais em 3x ocorre um bug e o somatório das parcelas é 99,99 reais.
+
+ - Corrigir o bug de cálculo do método PaymentController@calculate do arquivo [PaymentController](https://bitbucket.org/cplug/provaphp/src/master/app/Http/Controllers/PaymentController.php). 
+ 
+ Ao final do exercicio o teste abaixo deve executar com sucesso:
 
 ```php
 php artisan test --filter=PaymentTest
@@ -43,9 +51,17 @@ php artisan test --filter=PaymentTest
 
 ## 03 - Consumo de API
 
-Implementar uma API (adicionar rota, criar o controller, etc) que receba um tipo de cryptmoeda, a data de compra e a data de venda. E que retorne o valor pago, vendido e o lucro. Conforme descrito no [tests/Feature/ApiTest.php]
+Implementar uma API que receba um tipo de cryptmoeda, a data de compra e a data de venda e quantidade. E que retorne o valor pago, o valor vendido e o lucro. 
 
-Para o valor utilizar o preço médio do dia segundo a API Pública [https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary](https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary)
+Exemplo de entrada no endpoint /api/crypto/PSGFT :
+
+```json
+{
+    "quantidade": 250,
+    "dataCompra": "2021-02-01",
+    "dataVenda": "2021-04-18"
+}
+```
 
 Exemplo de saída:
 
@@ -58,16 +74,21 @@ Exemplo de saída:
     "intervalo_em_dias": 76
 }
 ```
+Essa chamada esta descrita no arquivo [ApiTest](https://bitbucket.org/cplug/provaphp/src/master/tests/Feature/ApiTest.php)
 
-Teste que deve executar:
+Para o calculo do valor utilizar o preço médio do dia segundo essa API Pública [https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary](https://www.mercadobitcoin.com.br/api-doc/#method_trade_api_daysummary)
+
+Ao final do exercicio o teste abaixo deve executar com sucesso:
 
 ```php
 php artisan test --filter=ApiTest
 ```
 
-## 04 - Filtro por hora
+## 04 - Verifica se um intervalo está disponivel
 
-Dado dois intervalos de horarios, o primeiro é o horário desejado e o outro o que já está ocupado. Ex:
+Dado dois intervalos de horarios: 
+* selected - é o intervalo de horario que se deseja utilizar
+* blocked - é o intervalo de horarios que já esta ocupado e não é possível utilizar
 
 ```php
 //escolhido das 07h as 08h
@@ -78,16 +99,34 @@ $blocked = ['start' => '09:00', 'end' => '10:00'];
 
 //nesse exemplo podemos fazer a reserva pois o intervalo das 7 as 8h está livre
 ```
+Para a execução desse exercicio só precisa do arquivo [SchedulerTest](https://bitbucket.org/cplug/provaphp/src/master/tests/Feature/SchedulerTest.php)
 
-Implementar a lógica do método SchedulerTest@isBusy para que o SchedulerTest seja válido
+Implementar a lógica do método **SchedulerTest@isBusy** para que o teste abaixo execute com sucesso:
 
 ```php
 php artisan test --filter=SchedulerTest
 ```
+Exemplo de saída de teste executado corretamente:
+
+```
+   PASS  Tests\Feature\SchedulerTest
+  ✓ selected equal blocked
+  ✓ selected before
+  ✓ selected after
+  ✓ selected between blocked
+  ✓ selected initial between blocked
+  ✓ selected final between blocked
+  ✓ selected before blocked
+  ✓ selected after blocked
+  ✓ blocked between selected
+
+  Tests:  9 passed
+  Time:   0.57s
+```
 
 ## 05 - Modelagem de Produtos com Atributos
 
-Criar os migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
+Criar os arquivos de migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
 
 * Camiseta da seleção brasileira
     * Tamanho: P, M, G e GG
@@ -100,6 +139,10 @@ Deverá ser possível armazenar o **preço** e a **quantidade** em estoque de ca
 
 ## 06 - Front-end
 
-Crie um formulário que receba duas datas (data de compra e de venda), quantidade e uma das moeda (BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP) e consultando a API criado no Exercício 03 exiba o valor de compra, venda e lucro.
+Crie um formulario com os campos data de compra, data de venda, codigo da moeda e quantidade.
 
-Adicione validação dos campos de entrada (data de entrada, saida, tipo de moeda) em um arquivo de Request.
+Ao submeter o formulário deverá exibir as informações retornadas da API gerada no Exercício 03.
+
+Validar os campos dos formulários
+* data de venda tem que ser maior que de compra
+* moedas válidas: BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP
