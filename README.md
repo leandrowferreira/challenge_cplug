@@ -86,7 +86,8 @@ php artisan test --filter=ApiTest
 
 ## 04 - Verifica se um intervalo está disponivel
 
-Dado dois intervalos de horarios: 
+Dado dois intervalos de horarios:
+
 * selected - é o intervalo de horario que se deseja utilizar
 * blocked - é o intervalo de horarios que já esta ocupado e não é possível utilizar
 
@@ -143,6 +144,7 @@ Crie um formulario com os campos data de compra, data de venda, codigo da moeda 
 
 Ao submeter o formulário deverá exibir as informações retornadas da API gerada no Exercício 03.
 
-Validar os campos dos formulários
+Validar os campos dos formulários:
+
 * data de venda tem que ser maior que de compra
 * moedas válidas: BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP
