@@ -12,9 +12,19 @@ Serão analisados:
 
 O projeto esta foi feito em Laravel e banco de dados MySql.
 
+Para iniciar é necessário clonar o projeto e criar uma branch com seu nome:
+
+```
+git clone git@bitbucket.org:cplug/provaphp.git
+
+git checkout -b nomecandidato
+```
+
+Assim que terminar solicitar um pull request
+
 ```php
 composer install
-
+cp .env.example .env 
 php artisan migrate
 ```
 
