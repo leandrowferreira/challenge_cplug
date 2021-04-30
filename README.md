@@ -19,8 +19,7 @@ git clone git@bitbucket.org:cplug/provaphp.git
 
 git checkout -b nomecandidato
 ```
-
-Assim que terminar solicitar um pull request
+Instalar os pacotes e executar os migrates
 
 ```php
 composer install
@@ -79,8 +78,8 @@ Exemplo de saída:
 {
     "valor_da_compra": 10513.88,
     "valor_da_venda": 46656.85,
-    "lucro": 36144.97,
-    "lucro_percentual": 343.78,
+    "lucro": 36142.97,
+    "lucro_percentual": 343.76,
     "intervalo_em_dias": 76
 }
 ```
@@ -137,7 +136,9 @@ Exemplo de saída de teste executado corretamente:
 
 ## 05 - Modelagem de Produtos com Atributos
 
-Criar os arquivos de migrates com as tabelas necessárias para armazenar produtos que possuem atributos. Exemplos:
+Criar os arquivos de migrates com as tabelas necessárias para armazenar produtos que possuem atributos (ex: cor, tamanho, tipo, material, etc.). Os produtos podem ter mais de um atributo.
+
+Exemplos:
 
 * Camiseta da seleção brasileira
     * Tamanho: P, M, G e GG
@@ -156,5 +157,5 @@ Ao submeter o formulário deverá exibir as informações retornadas da API gera
 
 Validar os campos dos formulários:
 
-* data de venda tem que ser maior que de compra
+* Data de venda tem que ser maior que de compra
 * moedas válidas: BCH, BTC, CAIFT, CHZ, ETH, GALFT, IMOB01, JUVFT, LINK, LTC, OGFT, PAXG, PSGFT, USDC, WBX, XRP
