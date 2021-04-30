@@ -15,7 +15,7 @@ class ApiTest extends TestCase
      */
     public function test_psgft_250()
     {
-        $response = $this->get('/api/crypto/PSGFT', [
+        $response = $this->post('/api/crypto/PSGFT', [
             'quantidade' => 250,
             'dataCompra' => '2021-02-01',
             'dataVenda' => '2021-04-18',
@@ -24,8 +24,8 @@ class ApiTest extends TestCase
         $response->assertStatus(200)->assertJson([
             'valor_da_compra' => 10513.88,
             'valor_da_venda' => 46656.85,
-            'lucro' => 36144.97,
-            'lucro_percentual' => 343.78,
+            'lucro' => 36142.97,
+            'lucro_percentual' => 343.76,
             'intervalo_em_dias' => 76
         ]);
     }
