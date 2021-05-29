@@ -123,7 +123,7 @@ class SchedulerTest extends TestCase
     {
         $selected = ['start' => '11:00', 'end' => '12:00'];
 
-        $blocked = ['start' => '11:15', 'end' => '10:45'];
+        $blocked = ['start' => '11:15', 'end' => '12:45'];
 
         $this->assertTrue($this->isBusy($selected, $blocked));
     }
