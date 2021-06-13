@@ -17,6 +17,7 @@ git clone https://github.com/leandrowferreira/challenge_cplug.git
 ### 2. Instalar as dependências necessárias
 
 ```bash
+cd challenge_cplug
 composer install
 cp .env.example .env
 php artisan migrate
