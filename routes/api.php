@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\AgendamentoController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CryptoController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PaymentController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +20,5 @@ Route::post('/customer', [CustomerController::class, 'store']);
 Route::put('/customer/{customer}', [CustomerController::class, 'update']);
 
 Route::get('/payment/calculate/{value}/{amount}', [PaymentController::class, 'calculate']);
+
+Route::post('/crypto/{token}', [CryptoController::class, 'crypto']);
