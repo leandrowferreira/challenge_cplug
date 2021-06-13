@@ -66,7 +66,13 @@ class CryptoController extends Controller
             return response($result->body(), $result->status());
         }
 
-        $valorCompra = json_decode($result->body(), true)['avg_price'] * $quantidade;
+        $corpo = json_decode($result->body(), true);
+
+        if (isset($corpo['error'])) {
+            return response($corpo['error'], 422);
+        }
+
+        $valorCompra = $corpo['avg_price'] * $quantidade;
 
         //Chamada do valor de venda
         try {
@@ -79,7 +85,13 @@ class CryptoController extends Controller
             return response($result->body(), $result->status());
         }
 
-        $valorVenda = json_decode($result->body(), true)['avg_price'] * $quantidade;
+        $corpo = json_decode($result->body(), true);
+
+        if (isset($corpo['error'])) {
+            return response($corpo['error'], 422);
+        }
+
+        $valorVenda = $corpo['avg_price'] * $quantidade;
 
         //Montagem do resultado
         $result = [
