@@ -9,29 +9,28 @@ class PaymentController extends Controller
      *
      * @param float $value Valor total
      * @param float $amount Numero de parcelas
-     * 
+     *
      * @return array
      */
     public function calculate($value, $amount)
     {
         return [
-            'value' => (float) $value,
-            'amount' => (int) $amount,
+            'value'        => (float) $value,
+            'amount'       => (int) $amount,
             'installments' => $this->getInstallments($value, $amount),
         ];
     }
 
     private function getInstallments($value, $amount)
     {
-        $installments = []; 
-        for($i = 0; $i < $amount; $i++) {
-            $installments[] = [
-                'order' => $i+1,
-                'value' => round($value / $amount, 2)
+        $newInstallments = [];
+        for ($i = $amount - 1, $t = 0; $i >= 0; $i--, $t += round($value / $amount, 2)) {
+            $newInstallments[$i] = [
+                'order' => $i + 1,
+                'value' => $i ? round($value / $amount, 2) : round($value - $t, 2)
             ];
         }
 
-        return $installments;
+        return $newInstallments;
     }
-
 }
