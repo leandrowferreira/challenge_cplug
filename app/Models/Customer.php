@@ -26,6 +26,20 @@ class Customer extends Model
                         Category::create(['name' => $categoryName]);
 
             $newCustomer->categories()->attach($category->id);
+
+            // O CÓDIGO A PARTIR DESTA LINHA MANTÉM O LEGADO!
+            // É necessário manter a tabela original 'customer_categories'
+            // atualizada.
+            // Porém, recomendo que esta tabela seja eliminada em favor de
+            // um relacionamento n-n categories-customers, como proposto.
+            //
+            // Para mais informações, veja o arquivo README.md.
+            DB::table('customer_categories')->insert([
+                'customer_id'   => $newCustomer->id,
+                'category_name' => $categoryName,
+                'created_at'    => Carbon::now(),
+                'updated_at'    => Carbon::now(),
+            ]);
         }
 
         return $newCustomer;
@@ -54,8 +68,7 @@ class Customer extends Model
         // Porém, recomendo que esta tabela seja eliminada em favor de
         // um relacionamento n-n categories-customers, como proposto.
         //
-        // Para mais informações, veja o arquivo SOLVE.md.
-
+        // Para mais informações, veja o arquivo README.md.
         DB::table('customer_categories')->where('customer_id', $this->id)->delete();
         foreach ($data['categories'] as $categoryName) {
             DB::table('customer_categories')->insert([
