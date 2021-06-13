@@ -6,20 +6,25 @@ use Tests\TestCase;
 
 class SchedulerTest extends TestCase
 {
-
     /**
      * Para efeitos de avaliação esse método esta sendo implementado no proprio arquivo de testes
-     * 
+     *
      * @param array $selected (Horario de inicio e fim em que se deseja consultar)
      * @param array $blocked (Horario de inicio e fim que já está ocupado)
-     * 
+     *
      * @return bool
      */
     private function isBusy($selected, $blocked)
     {
-        return true;
-    }
+        // "Numeriza" as horas
+        $selStart   = explode(':', $selected['start'])[0] * 60 + explode(':', $selected['start'])[1];
+        $selEnd     = explode(':', $selected['end'])[0] * 60 + explode(':', $selected['end'])[1];
+        $blockStart = explode(':', $blocked['start'])[0] * 60 + explode(':', $blocked['start'])[1];
+        $blockEnd   = explode(':', $blocked['end'])[0] * 60 + explode(':', $blocked['end'])[1];
 
+        // Detecta eventuais sobreposições (após um pequeno sanity test)
+        return  !($selStart < $selEnd && (($selStart >= $blockEnd) || ($selEnd <= $blockStart)));
+    }
 
     /**
      * @test
@@ -54,7 +59,6 @@ class SchedulerTest extends TestCase
 
         $this->assertFalse($this->isBusy($selected, $blocked));
     }
-
 
     /**
      * @test
