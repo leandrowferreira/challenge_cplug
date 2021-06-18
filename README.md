@@ -86,7 +86,7 @@ Abaixo, a modelagem simplificada, para melhor entendimento:
 
 ### Questão 6 - Frontend
 
-Para este exercício, foram utilizados *VueJS* e *Bootstrap*. Para simplificar, foi utilizada a mesma aplicação, mas desta vez respondendo através de uma rota `web`, e não `api`. Os arquivos `js` e `css` não estão compilados no diretório `public`, não requerendo, portanto, a instalação das dependências de *frontend*. Mesmo assim, caso deseje instalá-las e, assim, habilitar a possibilidade de alteração no código, deve-se executar o seguinte comando na raiz do projeto:
+Para este exercício, foram utilizados *VueJS* e *Bootstrap*. Para simplificar, foi utilizada a mesma aplicação, mas desta vez respondendo através de uma rota `web`, e não `api`. Os arquivos `js` e `css` já estão compilados no diretório `public`, não requerendo, portanto, a instalação das dependências de *frontend*. Mesmo assim, caso deseje instalá-las e, assim, habilitar a possibilidade de alteração no código, deve-se executar o seguinte comando na raiz do projeto:
 
 ```bash
 npm i && npm run dev
